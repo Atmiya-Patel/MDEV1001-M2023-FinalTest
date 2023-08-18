@@ -51,8 +51,8 @@ class FirestoreCRUDViewController: UIViewController, UITableViewDelegate, UITabl
         let artwork = artworks[indexPath.row]
 
         cell.titleLabel?.text = artwork.title
-        cell.artistsLabel?.text = artwork.artists
-        cell.posterImageView?.string = artwork.imageURL
+        cell.artistLabel?.text = artwork.artists
+        
 
         // Customize cell appearance as needed
 

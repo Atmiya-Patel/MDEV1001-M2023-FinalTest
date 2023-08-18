@@ -50,7 +50,32 @@ class AddEditFirestoreViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-   
+    @IBAction func UpdateButton_Pressed(_ sender: UIButton) {
+            guard
+                let title = titleTextField.text,
+                let artists = artistsTextField.text,
+                let medium = mediumTextField.text,
+                let subjects = subjectsTextField.text,
+                let yearCreated = yearCreatedTextField.text,
+                let description = descriptionTextView.text,
+                let dimensions = dimensionsTextField.text,
+                let imageURL = imageURLTextField.text,
+                let style = styleTextField.text,
+                let currentLocation = currentLocationTextField.text else {
+                print("Invalid data")
+                return
+            }
+            
+            let subjectsArray = subjects.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) }
+
+            let db = Firestore.firestore()
+
+            if let artwork = artwork {
+                // Update existing artwork
+                guard let documentID = artwork.documentID else {
+                    print("Document ID not available.")
+                    return
+                }
 
             let artworkRef = db.collection("artworks").document(documentID)
             artworkRef.updateData([
