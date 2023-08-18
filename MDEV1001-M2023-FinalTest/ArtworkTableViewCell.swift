@@ -18,4 +18,5 @@ class ArtworkTableViewCell: UITableViewCell {
     
     @IBOutlet weak var posterImageView: UIImageView!
     
+    
 }

@@ -51,8 +51,8 @@ class FirestoreCRUDViewController: UIViewController, UITableViewDelegate, UITabl
         let artwork = artworks[indexPath.row]
 
         cell.titleLabel?.text = artwork.title
-        cell.artistTextField?.text = artwork.artists
-        cell.styleTextField?.text = artwork.style
+        cell.artistsLabel?.text = artwork.artists
+        cell.posterImageView?.string = artwork.imageURL
 
         // Customize cell appearance as needed
 
@@ -78,4 +78,58 @@ class FirestoreCRUDViewController: UIViewController, UITableViewDelegate, UITabl
         performSegue(withIdentifier: "AddEditArtworkSegue", sender: nil)
     }
 
-  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          if segue.identifier == "AddEditArtworkSegue" {
+              if let addEditVC = segue.destination as? AddEditFirestoreViewController {
+                  addEditVC.ArtistsTableViewCell = self.tableView // Fix this line
+                  if let indexPath = sender as? IndexPath {
+                      let artwork = artworks[indexPath.row]
+                      addEditVC.artwork = artwork
+                  } else {
+                      addEditVC.artwork = nil
+                  }
+
+                  addEditVC.artworkUpdateCallback = { [weak self] in
+                      self?.fetchArtworksFromFirestore()
+                  }
+              }
+          }
+      }
+
+      func showDeleteConfirmationAlert(for artwork: Artwork, completion: @escaping (Bool) -> Void) {
+          let alert = UIAlertController(title: "Delete Artwork", message: "Are you sure you want to delete this artwork?", preferredStyle: .alert)
+
+          alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+              completion(false)
+          })
+
+          alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
+              completion(true)
+          })
+
+          present(alert, animated: true, completion: nil)
+      }
+
+      func deleteArtwork(at indexPath: IndexPath) {
+          let artwork = artworks[indexPath.row]
+
+          guard let documentID = artwork.documentID else {
+              print("Invalid document ID")
+              return
+          }
+
+          let db = Firestore.firestore()
+          db.collection("artworks").document(documentID).delete { [weak self] error in
+              if let error = error {
+                  print("Error deleting document: \(error)")
+              } else {
+                  DispatchQueue.main.async {
+                      print("Artwork deleted successfully.")
+                      self?.artworks.remove(at: indexPath.row)
+                      self?.tableView.deleteRows(at: [indexPath], with: .fade)
+                  }
+              }
+          }
+      }
+  }
+
