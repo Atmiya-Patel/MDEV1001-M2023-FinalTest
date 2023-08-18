@@ -85,7 +85,6 @@
 				D726288C2A8F3211002D1C26 /* Main.storyboard */,
 				D726288F2A8F3212002D1C26 /* Assets.xcassets */,
 				D72628912A8F3212002D1C26 /* LaunchScreen.storyboard */,
-				D72628942A8F3212002D1C26 /* Info.plist */,
 				D726289A2A8F3254002D1C26 /* GoogleService-Info.plist */,
 				D72628B52A8F3D44002D1C26 /* Artwork.swift */,
 				D72628B72A8F3D4F002D1C26 /* ArtworkTableViewCell.swift */,
@@ -93,6 +92,7 @@
 				D72628AB2A8F3374002D1C26 /* FirebaseLoginViewController.swift */,
 				D72628AD2A8F337B002D1C26 /* FirebaseRegisterViewController.swift */,
 				D72628AF2A8F3385002D1C26 /* FirestoreCRUDViewController.swift */,
+				D72628942A8F3212002D1C26 /* Info.plist */,
 			);
 			path = "MDEV1001-M2023-FinalTest";
 			sourceTree = "<group>";
