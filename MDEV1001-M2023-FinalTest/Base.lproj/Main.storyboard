@@ -226,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ZE-dV-lsS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2524" y="-63"/>
+            <point key="canvasLocation" x="-2524" y="-50"/>
         </scene>
         <!--FirestoreCRUDViewController-->
         <scene sceneID="tne-QT-ifu">
@@ -290,6 +290,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="PosterImage" destination="Tmj-WY-iaF" id="deP-jh-8f3"/>
+                                            <outlet property="artistLabel" destination="9Oh-d5-ubt" id="QQA-m6-DNi"/>
                                             <outlet property="artistsLable" destination="9Oh-d5-ubt" id="Yis-B7-km0"/>
                                             <outlet property="posterImageView" destination="Tmj-WY-iaF" id="aAj-ex-A6w"/>
                                             <outlet property="studioLabel" destination="9Oh-d5-ubt" id="oR1-7n-aIt"/>
@@ -451,7 +452,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Flx-9Q-P4O" userLabel="MovieIDTextField">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Flx-9Q-P4O" userLabel="ArtworkIDTextField">
                                 <rect key="frame" x="20" y="109" width="390" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -570,23 +571,17 @@
                     <connections>
                         <outlet property="AddEditTitleLabel" destination="0Ts-K7-xH1" id="hnC-fS-ODJ"/>
                         <outlet property="UpdateButton" destination="OWO-HY-BQs" id="99b-I3-jY9"/>
-                        <outlet property="actorsTextField" destination="7e2-Bt-DGv" id="H64-oa-NXt"/>
                         <outlet property="artistsTextField" destination="P0J-AI-5ZA" id="xhU-nD-BBQ"/>
+                        <outlet property="artworkIDTextField" destination="Flx-9Q-P4O" id="EAP-VT-dJF"/>
                         <outlet property="currentLocationTextField" destination="Od2-7k-qVG" id="1VU-xu-xuJ"/>
                         <outlet property="descriptionTextView" destination="8mL-5X-CDM" id="Li0-eq-18T"/>
                         <outlet property="dimensionsTextField" destination="7e2-Bt-DGv" id="E4F-Zv-tDv"/>
-                        <outlet property="directorsTextField" destination="dU5-mq-t7W" id="y9U-MW-nRK"/>
-                        <outlet property="genresTextField" destination="bKa-Lw-U7B" id="WZY-Oi-8o4"/>
                         <outlet property="imageURLTextField" destination="kGL-XZ-lsA" id="CIK-lk-8ve"/>
                         <outlet property="mediumTextField" destination="bKa-Lw-U7B" id="Yv0-8w-nZx"/>
-                        <outlet property="movieIDTextField" destination="Flx-9Q-P4O" id="Onf-py-zAo"/>
-                        <outlet property="studioTextField" destination="P0J-AI-5ZA" id="qGx-lL-6Ny"/>
                         <outlet property="styleTextField" destination="mle-4L-Fbn" id="nMj-tX-0eN"/>
                         <outlet property="subjectsTextField" destination="dU5-mq-t7W" id="H7N-R7-Wj7"/>
                         <outlet property="titleTextField" destination="H4X-ix-SZ8" id="MF6-zc-rvT"/>
-                        <outlet property="writersTextField" destination="Od2-7k-qVG" id="Vhw-z7-38D"/>
                         <outlet property="yearCreatedTextField" destination="Eg9-K8-YmO" id="WnI-h8-IEX"/>
-                        <outlet property="yearTextField" destination="Eg9-K8-YmO" id="ehM-58-fpn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dU-V3-JRC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

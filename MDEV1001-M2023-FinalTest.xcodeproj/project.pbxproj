@@ -12,7 +12,6 @@
 		D726288E2A8F3211002D1C26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D726288C2A8F3211002D1C26 /* Main.storyboard */; };
 		D72628902A8F3212002D1C26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D726288F2A8F3212002D1C26 /* Assets.xcassets */; };
 		D72628932A8F3212002D1C26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72628912A8F3212002D1C26 /* LaunchScreen.storyboard */; };
-		D726289B2A8F3254002D1C26 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D726289A2A8F3254002D1C26 /* GoogleService-Info.plist */; };
 		D726289E2A8F32A5002D1C26 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D726289D2A8F32A5002D1C26 /* FirebaseAuth */; };
 		D72628A02A8F32A5002D1C26 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D726289F2A8F32A5002D1C26 /* FirebaseDatabase */; };
 		D72628A22A8F32A5002D1C26 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D72628A12A8F32A5002D1C26 /* FirebaseDatabaseSwift */; };
@@ -25,6 +24,7 @@
 		D72628B02A8F3386002D1C26 /* FirestoreCRUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72628AF2A8F3385002D1C26 /* FirestoreCRUDViewController.swift */; };
 		D72628B62A8F3D44002D1C26 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72628B52A8F3D44002D1C26 /* Artwork.swift */; };
 		D72628B82A8F3D4F002D1C26 /* ArtworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72628B72A8F3D4F002D1C26 /* ArtworkTableViewCell.swift */; };
+		D77632EA2A90546D00C6352B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D77632E92A90546D00C6352B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,13 +35,13 @@
 		D726288F2A8F3212002D1C26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D72628922A8F3212002D1C26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D72628942A8F3212002D1C26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D726289A2A8F3254002D1C26 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D72628A92A8F336B002D1C26 /* AddEditFirestoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditFirestoreViewController.swift; sourceTree = "<group>"; };
 		D72628AB2A8F3374002D1C26 /* FirebaseLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseLoginViewController.swift; sourceTree = "<group>"; };
 		D72628AD2A8F337B002D1C26 /* FirebaseRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseRegisterViewController.swift; sourceTree = "<group>"; };
 		D72628AF2A8F3385002D1C26 /* FirestoreCRUDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreCRUDViewController.swift; sourceTree = "<group>"; };
 		D72628B52A8F3D44002D1C26 /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		D72628B72A8F3D4F002D1C26 /* ArtworkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkTableViewCell.swift; sourceTree = "<group>"; };
+		D77632E92A90546D00C6352B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +84,8 @@
 				D72628882A8F3211002D1C26 /* SceneDelegate.swift */,
 				D726288C2A8F3211002D1C26 /* Main.storyboard */,
 				D726288F2A8F3212002D1C26 /* Assets.xcassets */,
+				D77632E92A90546D00C6352B /* GoogleService-Info.plist */,
 				D72628912A8F3212002D1C26 /* LaunchScreen.storyboard */,
-				D726289A2A8F3254002D1C26 /* GoogleService-Info.plist */,
 				D72628B52A8F3D44002D1C26 /* Artwork.swift */,
 				D72628B72A8F3D4F002D1C26 /* ArtworkTableViewCell.swift */,
 				D72628A92A8F336B002D1C26 /* AddEditFirestoreViewController.swift */,
@@ -167,9 +167,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D72628932A8F3212002D1C26 /* LaunchScreen.storyboard in Resources */,
+				D77632EA2A90546D00C6352B /* GoogleService-Info.plist in Resources */,
 				D72628902A8F3212002D1C26 /* Assets.xcassets in Resources */,
 				D726288E2A8F3211002D1C26 /* Main.storyboard in Resources */,
-				D726289B2A8F3254002D1C26 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

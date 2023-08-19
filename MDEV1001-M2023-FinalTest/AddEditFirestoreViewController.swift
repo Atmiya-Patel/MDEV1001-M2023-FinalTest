@@ -8,6 +8,7 @@ class AddEditFirestoreViewController: UIViewController {
     @IBOutlet weak var UpdateButton: UIButton!
     
     // Artwork Fields
+    @IBOutlet weak var artworkIDTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var artistsTextField: UITextField!
     @IBOutlet weak var mediumTextField: UITextField!
@@ -20,13 +21,14 @@ class AddEditFirestoreViewController: UIViewController {
     @IBOutlet weak var currentLocationTextField: UITextField!
 
     var artwork: Artwork?
+    var artworkViewController: FirestoreCRUDViewController?
     var artworkUpdateCallback: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let artwork = artwork {
-            // Editing existing artwork
+           
             titleTextField.text = artwork.title
             artistsTextField.text = artwork.artists
             mediumTextField.text = artwork.medium
@@ -34,7 +36,6 @@ class AddEditFirestoreViewController: UIViewController {
             yearCreatedTextField.text = artwork.yearCreated
             descriptionTextView.text = artwork.description
             dimensionsTextField.text = artwork.dimensions
-            imageURLTextField.text = artwork.imageURL
             styleTextField.text = artwork.style
             currentLocationTextField.text = artwork.currentLocation
             
@@ -77,7 +78,7 @@ class AddEditFirestoreViewController: UIViewController {
                     return
                 }
 
-            let artworkRef = db.collection("artworks").document(documentID)
+            let artworkRef = db.collection("artwork").document(documentID)
             artworkRef.updateData([
                 "title": title,
                 "artists": artists,
@@ -89,9 +90,9 @@ class AddEditFirestoreViewController: UIViewController {
                 "imageURL": imageURL,
                 "style": style,
                 "currentLocation": currentLocation
-            ]) { [weak self] updateError in
-                if let updateError = updateError as? Error {
-                    print("Error updating artwork: \(updateError)")
+            ]) { [weak self] error in
+                if let error = error {
+                    print("Error updating artwork: \(error)")
                 } else {
                     print("Artwork updated successfully.")
                     self?.dismiss(animated: true) {
@@ -115,9 +116,9 @@ class AddEditFirestoreViewController: UIViewController {
             ] as [String : Any]
 
             var ref: DocumentReference? = nil
-            ref = db.collection("artworks").addDocument(data: newArtwork) { [weak self] addError in
-                if let addError = addError as? Error {
-                    print("Error adding artwork: \(addError)")
+            ref = db.collection("artwork").addDocument(data: newArtwork) { [weak self] error in
+                if let error = error {
+                    print("Error adding artwork: \(error)")
                 } else {
                     print("Artwork added successfully.")
                     self?.dismiss(animated: true) {

@@ -63,7 +63,7 @@ class FirebaseRegisterViewController: UIViewController {
             }
         }
         
-        @IBAction func CancelButton_Pressed(_ sender: UIButton) {
+        func CancelButton_Pressed(_ sender: UIButton) {
             FirebaseLoginViewController.shared?.ClearLoginTextFields()
             dismiss(animated: true, completion: nil)
         }

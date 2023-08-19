@@ -7,7 +7,6 @@ class ArtworkTableViewCell: UITableViewCell {
     
     @IBOutlet weak var artistLabel: UITextField!
 
-    
-   @IBOutlet weak var posterImageView : UIImageView!
+    @IBOutlet weak var posterImageView : UIImageView!
     
 }

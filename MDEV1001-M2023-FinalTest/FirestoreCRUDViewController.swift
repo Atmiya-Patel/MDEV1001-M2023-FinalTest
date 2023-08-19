@@ -5,7 +5,7 @@ import FirebaseFirestoreSwift
 class FirestoreCRUDViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    var artworks: [Artwork] = []
+    var artwork: [Artwork] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,7 +15,7 @@ class FirestoreCRUDViewController: UIViewController, UITableViewDelegate, UITabl
 
     func fetchArtworksFromFirestore() {
         let db = Firestore.firestore()
-        db.collection("artworks").getDocuments { (snapshot, error) in
+        db.collection("artwork").getDocuments { (snapshot, error) in
             if let error = error {
                 print("Error fetching documents: \(error)")
                 return
@@ -27,7 +27,8 @@ class FirestoreCRUDViewController: UIViewController, UITableViewDelegate, UITabl
                 let data = document.data()
 
                 do {
-                    let artwork = try Firestore.Decoder().decode(Artwork.self, from: data)
+                    var artwork = try Firestore.Decoder().decode(Artwork.self, from: data)
+                    artwork.documentID = document.documentID
                     fetchedArtworks.append(artwork)
                 } catch {
                     print("Error decoding artwork data: \(error)")
@@ -35,37 +36,34 @@ class FirestoreCRUDViewController: UIViewController, UITableViewDelegate, UITabl
             }
 
             DispatchQueue.main.async {
-                self.artworks = fetchedArtworks
+                self.artwork = fetchedArtworks
                 self.tableView.reloadData()
             }
         }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return artworks.count
+        return artwork.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArtworkCell", for: indexPath) as! ArtworkTableViewCell
 
-        let artwork = artworks[indexPath.row]
+        let artwork = artwork[indexPath.row]
 
         cell.titleLabel?.text = artwork.title
         cell.artistLabel?.text = artwork.artists
-        
-
-        // Customize cell appearance as needed
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "AddEditArtworkSegue", sender: indexPath)
+        performSegue(withIdentifier: "AddEditSegue", sender: indexPath)
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let artwork = artworks[indexPath.row]
+            let artwork = artwork[indexPath.row]
             showDeleteConfirmationAlert(for: artwork) { confirmed in
                 if confirmed {
                     self.deleteArtwork(at: indexPath)
@@ -75,15 +73,15 @@ class FirestoreCRUDViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     @IBAction func addButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "AddEditArtworkSegue", sender: nil)
+        performSegue(withIdentifier: "AddEditSegue", sender: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-          if segue.identifier == "AddEditArtworkSegue" {
+          if segue.identifier == "AddEditSegue" {
               if let addEditVC = segue.destination as? AddEditFirestoreViewController {
-                  addEditVC.ArtistsTableViewCell = self.tableView // Fix this line
+                  addEditVC.artworkViewController = self
                   if let indexPath = sender as? IndexPath {
-                      let artwork = artworks[indexPath.row]
+                      let artwork = artwork[indexPath.row]
                       addEditVC.artwork = artwork
                   } else {
                       addEditVC.artwork = nil
@@ -111,7 +109,7 @@ class FirestoreCRUDViewController: UIViewController, UITableViewDelegate, UITabl
       }
 
       func deleteArtwork(at indexPath: IndexPath) {
-          let artwork = artworks[indexPath.row]
+          let artwork = artwork[indexPath.row]
 
           guard let documentID = artwork.documentID else {
               print("Invalid document ID")
@@ -119,13 +117,13 @@ class FirestoreCRUDViewController: UIViewController, UITableViewDelegate, UITabl
           }
 
           let db = Firestore.firestore()
-          db.collection("artworks").document(documentID).delete { [weak self] error in
+          db.collection("artwork").document(documentID).delete { [weak self] error in
               if let error = error {
                   print("Error deleting document: \(error)")
               } else {
                   DispatchQueue.main.async {
                       print("Artwork deleted successfully.")
-                      self?.artworks.remove(at: indexPath.row)
+                      self?.artwork.remove(at: indexPath.row)
                       self?.tableView.deleteRows(at: [indexPath], with: .fade)
                   }
               }
